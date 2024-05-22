@@ -27,7 +27,7 @@
         </div>
       </header>
       <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <a href="index.html" class="navbar-brand"><h2>Eleições On-line</h2></a>
+        <a href="#" class="navbar-brand"><h2>Eleições On-line</h2></a>
         <button class="navbar-toggler" type="button"
           data-toggle="collapse" data-target="#navegacao"
           aria-controls="navegacao" aria-expanded="true"
@@ -37,7 +37,7 @@
         <div class="collapse navbar-collapse" id="navegacao">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a href="index.html" class="nav-link">Configuração da Urna
+              <a href="cadastroCandidatos.php" class="nav-link">Configuração da Urna
                 <span class="sr-only">(atual)</span>
               </a>
             </li>
@@ -82,7 +82,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Eleições On-line</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Configuração da Urna</li>
+                <li class="breadcrumb-item active" aria-current="page">Início</li>
               </ol>
             </nav>
           </div>
@@ -102,63 +102,16 @@
 
           <div class="blog-post text-center">
             <br><br>
-            <h2>Cadastro de Candidatos</h2>
+            <h1>Eleições On-line</h1>
             <br>
+            <p>Seja bem vindo ao nosso <strong>sistema de votação on-line</strong>. <br>
+              Uma maneira simples e eficiente de fazer um mundo mais <strong>democrático</strong>. <br>
+              Serão 3 candidatos a <strong>Presidente</strong>, 4 candidatos a <strong>Senador</strong> e 5 a <strong>Deputado Federal</strong>. <br>
+               Dos quais serão eleitos: 1 <strong>Presidente</strong>, 2 <strong>Senadores</strong> e 3 <strong>Deputados Federais</strong>.</p>
           
-              <form action="cadastroCandidatos.php" method="post" enctype="multipart/form-data" class="border border-dark rounded-lg p-3">
-                
-
-                <div class="row mb-4">
-                  <label for="nomeCandidato" class="col-sm-4 col-form-label">Nome do Candidato:</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputNomeCandidato" name="nomeCandidato" placeholder="Nome do Candidato">
-                  </div>
-                </div>
-                <div class="row mb-4">
-                  <label for="inputNumeroCandidato" class="col-sm-4 col-form-label">Número do Candidato:</label>
-                  <div class="col-sm-8">
-                    <input type="number" class="form-control" id="inputNumeroCandidato" placeholder="Número do Candidato">
-                  </div>
-                </div>
-                <div class="row mb-4">
-                  <label for="inputPartidoCandidato" class="col-sm-4 col-form-label">Partido do Candidato:</label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="inputPartidoCandidato" placeholder="Partido do Candidato">
-                  </div>
-                </div>
-                <div class="row mb-4">
-                  <label for="inputCargoCandidato" class="col-sm-4 col-form-label">Cargo do Candidato:</label>
-                  <div class="col-sm-8">
-                    <select class="form-select form-control custom-select" name="inputCargoCandidato" id="inputCargoCandidato">
-                      <option value="none" selected>Selecione...</option>
-                      <option value="cargoPresidente">Presidente</option>
-                      <option value="cargoSenador">Senador</option>
-                      <option value="cargoDeputadoFederal">Deputado Federal</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div class="row mb-4">
-                  <label for="inputFotoCandidato" class="col-sm-4 col-form-label">Foto do Candidato:</label>
-                  <div class="col-sm-8">
-                    <input type="file" class="form-control" id="inputFotoCandidato" >
-                  </div>
-                </div>
-               
-                
-                <div class="row mb-4">
-                  <div class="col-sm-1"></div>
-                  <button type="submit" class="btn btn-primary col-sm-4">Enviar Candidatura</button>
-                  <div class="col-sm-2"></div>
-                  
-                  <button type="reset" class="btn btn-warning col-sm-4">Limpar Campos</button>
-                  <div class="col-sm-1"></div>
-                </div>
-
-                
               
-              </form>
-            
+                
+
 
           </div>
           
@@ -177,37 +130,37 @@
             <div class="col-sm-1">
               <img src="IMAGENS/andre.jpg" alt="André" class="img-fluid card-img img-thumbnail ">
               <br>
-              André Frazão
+              André <br> Frazão
             </div>
             <div class="col-sm-1">
-              <img src="IMAGENS/TarcisioGuedes.png" alt="Marcos André" class="img-fluid card-img img-thumbnail ">
+              <img src="IMAGENS/MarcosAndre.png" alt="Marcos André" class="img-fluid card-img img-thumbnail ">
               <br>
-              Marcos André
+              Marcos<br> André
             </div>
             <div class="col-sm-1">
               <img src="IMAGENS/RegianeAraujo.png" alt="Regiane Araujo" class="img-fluid card-img img-thumbnail ">
               <br>
-              Regiane Araujo
+              Regiane <br> Araujo
             </div>
             <div class="col-sm-1">
               <img src="IMAGENS/dheurymy.jpg" alt="Rycherd Dheurymy" class="img-fluid card-img img-thumbnail ">
               <br>
-              Rycherd Dheurymy
+              Rycherd <br> Dheurymy
             </div>
             <div class="col-sm-1">
-              <img src="" alt="Sandra" class="img-fluid card-img img-thumbnail ">
+              <img src="IMAGENS/Sandra.png" alt="Sandra" class="img-fluid card-img img-thumbnail ">
               <br>
-              Sandra Alguma Coisa
+              Sandra <br> Regina
             </div>
             <div class="col-sm-1">
               <img src="IMAGENS/TarcisioGuedes.png" alt="Tarcisio Guedes" class="img-fluid card-img img-thumbnail ">
               <br>
-              Tarcisio Guedes
+              Tarcisio <br> Guedes
             </div>
             <div class="col-sm-1">
               <img src="IMAGENS/ValerianeAlmeida.png" alt="Valeriane Almeida" class="img-fluid card-img img-thumbnail ">
               <br>
-              Valeriane Almeida
+              Valeriane <br> Almeida
             </div>
             <div class="col-sm-1"></div>
           </div>

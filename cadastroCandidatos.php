@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -27,7 +28,7 @@
         </div>
       </header>
       <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <a href="#" class="navbar-brand"><h2>Eleições On-line</h2></a>
+        <a href="index.php" class="navbar-brand"><h2>Eleições On-line</h2></a>
         <button class="navbar-toggler" type="button"
           data-toggle="collapse" data-target="#navegacao"
           aria-controls="navegacao" aria-expanded="true"
@@ -37,7 +38,7 @@
         <div class="collapse navbar-collapse" id="navegacao">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a href="cadastroCandidatos.html" class="nav-link">Configuração da Urna
+              <a href="cadastroCandidatos.php" class="nav-link">Configuração da Urna
                 <span class="sr-only">(atual)</span>
               </a>
             </li>
@@ -82,7 +83,7 @@
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Eleições On-line</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Início</li>
+                <li class="breadcrumb-item active" aria-current="page">Configuração da Urna</li>
               </ol>
             </nav>
           </div>
@@ -102,16 +103,63 @@
 
           <div class="blog-post text-center">
             <br><br>
-            <h1>Eleições On-line</h1>
+            <h2>Cadastro de Candidatos</h2>
             <br>
-            <p>Seja bem vindo ao nosso <strong>sistema de votação on-line</strong>. <br>
-              Uma maneira simples e eficiente de fazer um mundo mais <strong>democrático</strong>. <br>
-              Serão 3 candidatos a <strong>Presidente</strong>, 4 candidatos a <strong>Senador</strong> e 5 a <strong>Deputado Federal</strong>. <br>
-               Dos quais serão eleitos: 1 <strong>Presidente</strong>, 2 <strong>Senadores</strong> e 3 <strong>Deputados Federais</strong>.</p>
           
-              
+              <form action="cadastroCandidatos.php" method="post" enctype="multipart/form-data" class="border border-dark rounded-lg p-3">
                 
 
+                <div class="row mb-4">
+                  <label for="nomeCandidato" class="col-sm-4 col-form-label">Nome do Candidato:</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputNomeCandidato" name="nomeCandidato" placeholder="Nome do Candidato">
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <label for="numeroCandidato" class="col-sm-4 col-form-label">Número do Candidato:</label>
+                  <div class="col-sm-8">
+                    <input type="number" class="form-control" id="inputNumeroCandidato" name="numeroCandidato" placeholder="Número do Candidato">
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <label for="partidoCandidato" class="col-sm-4 col-form-label">Partido do Candidato:</label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" id="inputPartidoCandidato" name="partidoCandidato" placeholder="Partido do Candidato">
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <label for="cargoCandidato" class="col-sm-4 col-form-label">Cargo do Candidato:</label>
+                  <div class="col-sm-8">
+                    <select class="form-select form-control custom-select" name="cargoCandidato" id="inputCargoCandidato">
+                      <option value="none" selected>Selecione...</option>
+                      <option value="cargoPresidente">Presidente</option>
+                      <option value="cargoSenador">Senador</option>
+                      <option value="cargoDeputadoFederal">Deputado Federal</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row mb-4">
+                  <label for="fotoCandidato" class="col-sm-4 col-form-label">Foto do Candidato:</label>
+                  <div class="col-sm-8">
+                    <input type="file" class="form-control" id="inputFotoCandidato" name="fotoCandidato" >
+                  </div>
+                </div>
+               
+                
+                <div class="row mb-4">
+                  <div class="col-sm-1"></div>
+                  <button type="submit" class="btn btn-primary col-sm-4">Enviar Candidatura</button>
+                  <div class="col-sm-2"></div>
+                  
+                  <button type="reset" class="btn btn-warning col-sm-4">Limpar Campos</button>
+                  <div class="col-sm-1"></div>
+                </div>
+
+                
+              
+              </form>
+            
 
           </div>
           
@@ -130,37 +178,37 @@
             <div class="col-sm-1">
               <img src="IMAGENS/andre.jpg" alt="André" class="img-fluid card-img img-thumbnail ">
               <br>
-              André Frazão
+              André <br> Frazão
             </div>
             <div class="col-sm-1">
-              <img src="IMAGENS/MarcosAndre.png" alt="Marcos André" class="img-fluid card-img img-thumbnail ">
+              <img src="IMAGENS/MarcosAndre.pngdré" class="img-fluid card-img img-thumbnail ">
               <br>
-              Marcos André
+              Marcos <br> André
             </div>
             <div class="col-sm-1">
               <img src="IMAGENS/RegianeAraujo.png" alt="Regiane Araujo" class="img-fluid card-img img-thumbnail ">
               <br>
-              Regiane Araujo
+              Regiane <br> Araujo
             </div>
             <div class="col-sm-1">
               <img src="IMAGENS/dheurymy.jpg" alt="Rycherd Dheurymy" class="img-fluid card-img img-thumbnail ">
               <br>
-              Rycherd Dheurymy
+              Rycherd <br> Dheurymy
             </div>
             <div class="col-sm-1">
-              <img src="" alt="Sandra" class="img-fluid card-img img-thumbnail ">
+              <img src="IMAGENS/Sandra.png" alt="Sandra" class="img-fluid card-img img-thumbnail ">
               <br>
-              Sandra Alguma Coisa
+              Sandra <br> Regina
             </div>
             <div class="col-sm-1">
               <img src="IMAGENS/TarcisioGuedes.png" alt="Tarcisio Guedes" class="img-fluid card-img img-thumbnail ">
               <br>
-              Tarcisio Guedes
+              Tarcisio <br> Guedes
             </div>
             <div class="col-sm-1">
               <img src="IMAGENS/ValerianeAlmeida.png" alt="Valeriane Almeida" class="img-fluid card-img img-thumbnail ">
               <br>
-              Valeriane Almeida
+              Valeriane <br> Almeida
             </div>
             <div class="col-sm-1"></div>
           </div>
@@ -192,3 +240,80 @@
    <script src="ESTILO/bootstrap-4.6.2-dist/js/bootstrap.min.js"></script>-->
    
   </html>
+<?php
+
+
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Inicializar variáveis
+    $nome = $numero = $partido = $cargo = $upload_file = $votos = '';
+
+    // Capturar e sanitizar dados do formulário se existirem
+    if (isset($_POST['nomeCandidato'])) {
+        $nome = htmlspecialchars($_POST['nomeCandidato']);
+    }
+    if (isset($_POST['numeroCandidato'])) {
+        $numero = htmlspecialchars($_POST['numeroCandidato']);
+    }
+    if (isset($_POST['partidoCandidato'])) {
+        $partido = htmlspecialchars($_POST['partidoCandidato']);
+    }
+    if (isset($_POST['cargoCandidato'])) {
+        $cargo = htmlspecialchars($_POST['cargoCandidato']);
+    }
+
+    // Verificar se um arquivo foi enviado
+    if (isset($_FILES['fotoCandidato']) && $_FILES['fotoCandidato']['error'] == UPLOAD_ERR_OK) {
+        $foto = $_FILES['fotoCandidato'];
+
+        // Definir o diretório de upload
+        $upload_dir = 'uploads/';
+        if (!is_dir($upload_dir)) {
+            mkdir($upload_dir, 0777, true);
+        }
+
+        // Definir o caminho completo para salvar o arquivo
+        $upload_file = $upload_dir . basename($foto['name']);
+
+        // Mover o arquivo para o diretório de upload
+        if (move_uploaded_file($foto['tmp_name'], $upload_file)) {
+            echo "Arquivo enviado com sucesso.<br>";
+        } else {
+            echo "Erro ao enviar o arquivo.<br>";
+        }
+    } else {
+        echo "Nenhum arquivo enviado ou erro no envio.<br>";
+    }
+
+    // Definir o nome do arquivo CSV baseado no cargo
+    switch ($cargo) {
+        case 'cargoPresidente':
+            $csv_file = 'candidatos_presidente.csv';
+            break;
+        case 'cargoSenador':
+            $csv_file = 'candidatos_senador.csv';
+            break;
+        case 'cargoDeputadoFederal':
+            $csv_file = 'candidatos_deputado_federal.csv';
+            break;
+        default:
+            echo "Cargo inválido.";
+            exit;
+    }
+
+    // Preparar os dados para serem salvos no CSV
+    $data = [$nome, $numero, $partido, $cargo, $upload_file, $votos];
+
+    // Salvar os dados no arquivo CSV
+    $file_handle = fopen($csv_file, 'a');
+    if ($file_handle !== false) {
+        fputcsv($file_handle, $data);
+        fclose($file_handle);
+        echo "Dados salvos com sucesso no arquivo CSV.<br>";
+    } else {
+        echo "Erro ao abrir o arquivo CSV.<br>";
+    }
+}
+?>
+
+  
