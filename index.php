@@ -48,9 +48,9 @@
                 </a>
               
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="badge.html">Votação para Presidente</a>
-                  <a class="dropdown-item" href="breadcrumb.html">Votação para Senador</a>
-                  <a class="dropdown-item" href="caurosel.html">Votação para Deputado Federal</a>
+                  <a class="dropdown-item" href="votacaoPresidente.php">Votação para Presidente</a>
+                  <a class="dropdown-item" href="votacaoSenador.php">Votação para Senador</a>
+                  <a class="dropdown-item" href="votacaoDeputadoFederal.php">Votação para Deputado Federal</a>
                 </div>
               </div>
             </li>
@@ -106,8 +106,17 @@
             <br>
             <p>Seja bem vindo ao nosso <strong>sistema de votação on-line</strong>. <br>
               Uma maneira simples e eficiente de fazer um mundo mais <strong>democrático</strong>. <br>
-              Serão 3 candidatos a <strong>Presidente</strong>, 4 candidatos a <strong>Senador</strong> e 5 a <strong>Deputado Federal</strong>. <br>
-               Dos quais serão eleitos: 1 <strong>Presidente</strong>, 2 <strong>Senadores</strong> e 3 <strong>Deputados Federais</strong>.</p>
+              Serão 3 candidatos a <strong>Presidente</strong>, 4 candidatos a <strong>Senador</strong> e 5 candidatos a <strong>Deputado Federal</strong>. <br>
+               Dos quais serão eleitos: 1 <strong>Presidente</strong>, 2 <strong>Senadores</strong> e 3 <strong>Deputados Federais</strong>.
+              <br><br>
+              Para o funcionamento correto do sistema, siga os passos abaixo: <br>
+
+              <ul class="list list-group">
+                <li class=" list list-group-item">Acesse a página <strong>Configuração de Urna</strong> e cadastre os candidatos. Lembre-se de seguir a quantidade correta de candidatos por cargo. </li>
+                <li class=" list list-group-item">Acesse a página <strong>Processo de Votação</strong> conforme o cargo a ser votado e cadastre os votos. </li>
+                <li class=" list list-group-item">Acesse a página <strong>Resultados da Eleição</strong> conforme o cargo escolhido e verifique os resultados. </li>
+              </ul>
+              </p>
           
               
                 

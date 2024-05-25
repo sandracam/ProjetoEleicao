@@ -49,9 +49,9 @@
                 </a>
               
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="badge.html">Votação para Presidente</a>
-                  <a class="dropdown-item" href="breadcrumb.html">Votação para Senador</a>
-                  <a class="dropdown-item" href="caurosel.html">Votação para Deputado Federal</a>
+                  <a class="dropdown-item" href="votacaoPresidente.php">Votação para Presidente</a>
+                  <a class="dropdown-item" href="votacaoSenador.php">Votação para Senador</a>
+                  <a class="dropdown-item" href="votacaoDeputadoFederal.php">Votação para Deputado Federal</a>
                 </div>
               </div>
             </li>
@@ -181,7 +181,7 @@
               André <br> Frazão
             </div>
             <div class="col-sm-1">
-              <img src="IMAGENS/MarcosAndre.pngdré" class="img-fluid card-img img-thumbnail ">
+              <img src="IMAGENS/MarcosAndre.png" class="img-fluid card-img img-thumbnail ">
               <br>
               Marcos <br> André
             </div>
@@ -246,7 +246,8 @@
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Inicializar variáveis
-    $nome = $numero = $partido = $cargo = $upload_file = $votos = '';
+    $nome = $numero = $partido = $cargo = $upload_file = '';
+    $votos = 0;
 
     // Capturar e sanitizar dados do formulário se existirem
     if (isset($_POST['nomeCandidato'])) {
