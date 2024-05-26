@@ -3,127 +3,83 @@
 // Caminho para o arquivo CSV
 $arquivoCSVPresidente = 'candidatos_presidente.csv';
 
-$textoInformativo = "Vote com consciência!";
-
-// Abre o arquivo para leitura
-if (($handle = fopen($arquivoCSVPresidente, 'r')) !== FALSE) {
-  // Inicializa um array para armazenar os dados
-  $dados = [];
-
-  // Loop através de cada linha do arquivo CSV
-  while (($linha = fgetcsv($handle, 1000, ',')) !== FALSE) {
-    // Adiciona a linha ao array de dados
-    $dados[] = $linha;
-  }
-
-  // Fecha o arquivo
-  fclose($handle);
-
-  // Percorre cada linha do array de dados
-  foreach ($dados as $indice => $linha) {
-    // Cria variáveis dinamicamente
-    ${"nomeCandidatoVotacaoPresidente$indice"} = $linha[0];
-    ${"numeroCandidatoVotacaoPresidente$indice"} = $linha[1];
-    ${"partidoCandidatoVotacaoPresidente$indice"} = $linha[2];
-    ${"fotoCandidatoVotacaoPresidente$indice"} = $linha[4];
-
-    
-  }
-} else {
-  echo 'Não foi possível abrir o arquivo.';
-}
-
-// Função para ler todo o conteúdo do arquivo CSV cadastro_presidente.csv e armazenar em um array
-function lerCsv($arquivoCSVPresidente)
-{
-  $dadosPresidente = [];
-  if (($handle = fopen($arquivoCSVPresidente, 'r')) !== FALSE) {
-    while (($row = fgetcsv($handle, 1000, ',')) !== FALSE) {
-      $dadosPresidente[] = $row;
-    }
-    fclose($handle);
-  }
-  return $dadosPresidente;
-}
-
-// Função para escrever todo o conteúdo de um array de volta para o arquivo CSV
-function escreverCsv($arquivoCSVPresidente, $dadosPresidente)
-{
-  if (($handle = fopen($arquivoCSVPresidente, 'w')) !== FALSE) {
-    foreach ($dadosPresidente as $linha) {
-      fputcsv($handle, $linha);
-    }
-    fclose($handle);
-  }
-}
+$textoInformativo = "Votacao ainda não encerrada!";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Inicializar variáveis
-  $numeroCandidatoVotado = 0;
-  
+  $textoInformativo = "Votacao encerrada!";
 
-  // Capturar e sanitizar dados do formulário se existirem
-  if (isset($_POST['numeroCandidatoVotacaoPresidente'])) {
-    $numeroCandidatoVotado = htmlspecialchars($_POST['numeroCandidatoVotacaoPresidente']);
-  }
-
-  
-
-  if ($numeroCandidatoVotado == $numeroCandidatoVotacaoPresidente0) {
-    //Ler o arquivo CSV dos candidadtos a presidente
-    $dadosPresidente = lerCsv($arquivoCSVPresidente);
-
-    // Verificar se a posição existe e alterar o dado específico
-    $linhaParaAlterar = 0;
-    $colunaParaAlterar = 5;
-
-    //Altera o dado dos votos do candidato, adicionando +1
-    if (isset($dadosPresidente[$linhaParaAlterar][$colunaParaAlterar])) {
-      $dadosPresidente[$linhaParaAlterar][$colunaParaAlterar] = ($dadosPresidente[$linhaParaAlterar][$colunaParaAlterar] + 1);
+  // Função para ler um arquivo CSV e retornar os dados como um array
+  function lerCSV($arquivoCSVPresidente)
+  {
+    $dados = [];
+    if (($handle = fopen($arquivoCSVPresidente, "r")) !== FALSE) {
+      while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        $dados[] = $row;
+      }
+      fclose($handle);
     }
-
-    escreverCsv($arquivoCSVPresidente, $dadosPresidente);
-
-    $textoInformativo = "Voto registrado com sucesso.";
+    return $dados;
   }
-  elseif ($numeroCandidatoVotado == $numeroCandidatoVotacaoPresidente1) {
-    //Ler o arquivo CSV dos candidadtos a presidente
-    $dadosPresidente = lerCsv($arquivoCSVPresidente);
 
-    // Verificar se a posição existe e alterar o dado específico
-    $linhaParaAlterar = 1;
-    $colunaParaAlterar = 5;
+  // Função para ordenar as linhas de um array CSV com base na última coluna
+  function ordenarPorUltimaColuna($dados)
+  {
+    // Função de comparação personalizada para usar com usort
+    usort($dados, function ($a, $b) {
+      return $b[count($b) - 1] <=> $a[count($a) - 1];
+    });
+    return $dados;
+  }
 
-    //Altera o dado dos votos do candidato, adicionando +1
-    if (isset($dadosPresidente[$linhaParaAlterar][$colunaParaAlterar])) {
-      $dadosPresidente[$linhaParaAlterar][$colunaParaAlterar] = ($dadosPresidente[$linhaParaAlterar][$colunaParaAlterar] + 1);
+  // Função para escrever os dados ordenados de volta para o arquivo CSV original
+  function escreverCSV($arquivoCSVPresidente, $dados)
+  {
+    if (($handle = fopen($arquivoCSVPresidente, "w")) !== FALSE) {
+      foreach ($dados as $row) {
+        fputcsv($handle, $row);
+      }
+      fclose($handle);
     }
-
-    escreverCsv($arquivoCSVPresidente, $dadosPresidente);
-
-    $textoInformativo = "Voto registrado com sucesso.";
-} 
-elseif ($numeroCandidatoVotado == $numeroCandidatoVotacaoPresidente2) {
-  //Ler o arquivo CSV dos candidadtos a presidente
-  $dadosPresidente = lerCsv($arquivoCSVPresidente);
-
-  // Verificar se a posição existe e alterar o dado específico
-  $linhaParaAlterar = 2;
-  $colunaParaAlterar = 5;
-
-  //Altera o dado dos votos do candidato, adicionando +1
-  if (isset($dadosPresidente[$linhaParaAlterar][$colunaParaAlterar])) {
-    $dadosPresidente[$linhaParaAlterar][$colunaParaAlterar] = ($dadosPresidente[$linhaParaAlterar][$colunaParaAlterar] + 1);
   }
 
-  escreverCsv($arquivoCSVPresidente, $dadosPresidente);
-  $textoInformativo = "Voto registrado com sucesso.";
-}
-else {
-  $textoInformativo = "Voto ainda não registrado ou número do candidato digitado incorretamente.";
-}
-}
+  // Ler os dados do arquivo CSV
+  $dados = lerCSV($arquivoCSVPresidente);
 
+  // Ordenar as linhas com base na última coluna
+  $dadosOrdenados = ordenarPorUltimaColuna($dados);
+
+  // Escrever os dados ordenados de volta para o mesmo arquivo CSV
+  escreverCSV($arquivoCSVPresidente, $dadosOrdenados);
+
+  // Criar variáveis para cada item do CSV
+  foreach ($dados as $i => $linha) {
+    foreach ($linha as $j => $item) {
+      ${"L{$i}C{$j}"} = $item;
+      echo "Variável L{$i}C{$j}: ${"L{$i}C{$j}"}\n";
+    }
+  }
+
+
+  // Ler os dados do arquivo CSV
+  $dados = lerCSV($arquivoCSVPresidente);
+
+  // Ordenar as linhas com base na última coluna
+  $dadosOrdenados = ordenarPorUltimaColuna($dados);
+
+  // Escrever os dados ordenados de volta para o mesmo arquivo CSV
+  escreverCSV($arquivoCSVPresidente, $dadosOrdenados);
+
+
+
+
+
+  $totalVotos = $L0C5 + $L1C5 + $L2C5;
+  echo "$totalVotos";
+
+  $percentualPrimeiroLugar = ($L0C5 / $totalVotos) * 100;
+  $percentualSegundoLugar = ($L1C5 / $totalVotos) * 100;
+  $percentualTerceiroLugar = ($L2C5 / $totalVotos) * 100;
+}
 ?>
 
 
@@ -166,7 +122,7 @@ else {
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <a href="cadastroCandidatos.php" class="nav-link">Configuração da Urna
-              <span class="sr-only">(atual)</span>
+
             </a>
           </li>
           <li class="nav-item active">
@@ -189,7 +145,7 @@ else {
               </a>
 
               <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="resultadoPresidente.php">Resultado para Presidente</a>
+                <a class="dropdown-item" href="resultadoPresidente.php">Resultado para Presidente<span class="sr-only">(atual)</span></a>
                 <a class="dropdown-item" href="resultadoSenador.php">Resultado para Senador</a>
                 <a class="dropdown-item" href="resultadoDeputadoFederal.php">Resultado para Deputado Federal</a>
               </div>
@@ -210,8 +166,8 @@ else {
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.php">Eleições On-line</a></li>
-              <li class="breadcrumb-item" aria-current="page">Processo de Votação</li>
-              <li class="breadcrumb-item active" aria-current="page">Votação para Presidente</li>
+              <li class="breadcrumb-item" aria-current="page">Resultados da Eleição</li>
+              <li class="breadcrumb-item active" aria-current="page">Resultado para Presidente</li>
             </ol>
           </nav>
         </div>
@@ -231,61 +187,127 @@ else {
 
         <div class="blog-post text-center">
           <br><br>
-          <h2>Votação para Presidente</h2>
+          <h2>Resultado para Presidente</h2>
           <br>
 
-          <form action="votacaoPresidente.php" method="post" enctype="multipart/form-data" class="border border-dark rounded-lg p-3">
+          <form action="resultadoPresidente.php" method="post" enctype="multipart/form-data" class="border border-dark rounded-lg p-3">
 
             <div class="row mb-4">
               <div class="col-sm-4"></div>
               <p class="col-sm-4">
                 <?php
                 echo "$textoInformativo";
-                 ?>
+                ?>
               </p>
               <div class="col-sm-4"></div>
             </div>
 
 
+
+
+
             <div class="row mb-4">
-              <div class="col-sm-1"></div>
-              <?php
-              echo '<div class="col-sm-2"><img src="' . $fotoCandidatoVotacaoPresidente0 . '" class="img-fluid img card-img img-thumbnail "><br>Candidato: <br> <strong>' . $nomeCandidatoVotacaoPresidente0 . '</strong> <br>Número: ' . $numeroCandidatoVotacaoPresidente0 . ' <br> Partido: ' . $partidoCandidatoVotacaoPresidente0 . '</div>';
-
-              ?>
-              <div class="col-sm-2"></div>
-              <?php
-              echo '<div class="col-sm-2"><img src="' . $fotoCandidatoVotacaoPresidente1 . '" class="img-fluid img card-img img-thumbnail "><br>Candidato: <br> <strong>' . $nomeCandidatoVotacaoPresidente1 . '</strong> <br>Número: ' . $numeroCandidatoVotacaoPresidente1 . ' <br> Partido: ' . $partidoCandidatoVotacaoPresidente1 . '</div>';
-
-              ?>
-              <div class="col-sm-2"></div>
-              <?php
-              echo '<div class="col-sm-2"><img src="' . $fotoCandidatoVotacaoPresidente2 . '" class="img-fluid img card-img img-thumbnail "><br>Candidato: <br> <strong>' . $nomeCandidatoVotacaoPresidente2 . '</strong> <br>Número: ' . $numeroCandidatoVotacaoPresidente2 . ' <br> Partido: ' . $partidoCandidatoVotacaoPresidente2 . '</div>';
-
-              ?>
-              <div class="col-sm-1"></div>
-            </div>
-            <div class="row mb-4">
-              <label for="numeroCandidatoVotacaoPresidente" class="col-sm-4 col-form-label">Digite o número do candidato:</label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control" id="inputNumeroCandidatoVotacaoPresidente" name="numeroCandidatoVotacaoPresidente" placeholder="Número do Candidato">
-              </div>
+              <div class="col-sm-4"></div>
+              <button type="submit" class="btn btn-primary col-sm-4">Resultado para Presidente</button>
+              <div class="col-sm-4"></div>
 
 
             </div>
 
-            <div class="row mb-4">
-              <div class="col-sm-1"></div>
-              <button type="submit" class="btn btn-primary col-sm-4">Votar</button>
-              <div class="col-sm-2"></div>
+            <ul class="list list-group">
+              <li class="list list-group-item">
 
-              <button type="reset" class="btn btn-warning col-sm-4">Limpar Campos</button>
-              <div class="col-sm-1"></div>
-            </div>
+                <div class="row mb-4">
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-6">
+                    <h3>Primeiro Lugar:</h3>
+                  </div>
+                  <div class="col-sm-3"></div>
+                </div>
+                <div class="row mb-4">
+                  <div class="col-sm-2"></div>
+                  <div class="col-sm-2">
+                    <?php echo '<img src="' . $L0C4 . '" class="img-fluid img card-img img-thumbnail ">' ?>
+                  </div>
+                  <p class="col-sm-3">
+                    Candidato: <?php echo "<strong>$L0C0</strong>"; ?> <br>
+                    Número: <?php echo "$L0C1"; ?> <br>
+                    Partido: <?php echo "$L0C2"; ?> <br>
+                    Votos: <?php echo "$L0C5"; ?> votos válidos.<br>
+                    Percentual de Votos: <?php echo "$percentualPrimeiroLugar"; ?>%<br>
+                    <strong>CANDIDATO ELEITO</strong>
+                  </p>
+                  <div class="col-sm-2">
+                  <img src="IMAGENS/candidatoEleito.png" class="img-fluid img card-img img-thumbnail " alt="">
+                </div>
+                </div>
+                
 
+              </li>
+              <li class="list list-group-item">
+
+                <div class="row mb-4">
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-6">
+                    <h3>Segundo Lugar:</h3>
+                  </div>
+                  <div class="col-sm-3"></div>
+                </div>
+                <div class="row mb-4">
+                  <div class="col-sm-2"></div>
+                  <div class="col-sm-2">
+                    <?php echo '<img src="' . $L1C4 . '" class="img-fluid img card-img img-thumbnail ">' ?>
+                  </div>
+                  <p class="col-sm-3">
+                    Candidato: <?php echo "<strong>$L1C0</strong>"; ?> <br>
+                    Número: <?php echo "$L1C1"; ?> <br>
+                    Partido: <?php echo "$L1C2"; ?> <br>
+                    Votos: <?php echo "$L1C5"; ?> votos válidos.<br>
+                    Percentual de Votos: <?php echo "$percentualSegundoLugar"; ?>%<br>
+                    <strong>CANDIDATO NÃO ELEITO</strong>
+                  </p>
+                  <div class="col-sm-2">
+                  <img src="IMAGENS/candidatoPerdedor.png" class="img-fluid img card-img img-thumbnail " alt="">
+                </div>
+                </div>
+                
+
+              </li>
+              <li class="list list-group-item">
+
+                <div class="row mb-4">
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-6">
+                    <h3>Terceiro Lugar:</h3>
+                  </div>
+                  <div class="col-sm-3"></div>
+                </div>
+                <div class="row mb-4">
+                  <div class="col-sm-2"></div>
+                  <div class="col-sm-2">
+                    <?php echo '<img src="' . $L2C4 . '" class="img-fluid img card-img img-thumbnail ">' ?>
+                  </div>
+                  <p class="col-sm-3">
+                    Candidato: <?php echo "<strong>$L1C0</strong>"; ?> <br>
+                    Número: <?php echo "$L2C1"; ?> <br>
+                    Partido: <?php echo "$2"; ?> <br>
+                    Votos: <?php echo "$L2C5"; ?> votos válidos.<br>
+                    Percentual de Votos: <?php echo "$percentualTerceiroLugar"; ?>%<br>
+                    <strong>CANDIDATO NÃO ELEITO</strong>
+                  </p>
+                  <div class="col-sm-2">
+                  <img src="IMAGENS/candidatoPerdedor.png" class="img-fluid img card-img img-thumbnail " alt="">
+                </div>
+                </div>
+                
+
+              </li>
+            </ul>
 
 
           </form>
+
+
 
 
         </div>

@@ -62,9 +62,9 @@
                 </a>
               
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <a class="dropdown-item" href="cores.html">Resultado para Presidente</a>
-                  <a class="dropdown-item" href="marginpadding.html">Resultado para Senador</a>
-                  <a class="dropdown-item" href="bordas.html">Resultado para Deputado Federal</a>
+                  <a class="dropdown-item" href="resultadoPresidente.php">Resultado para Presidente</a>
+                  <a class="dropdown-item" href="resultadoSenador.php">Resultado para Senador</a>
+                  <a class="dropdown-item" href="resultadoDeputadoFederal.php">Resultado para Deputado Federal</a>
                 </div>
               </div>
             </li>
