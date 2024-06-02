@@ -85,12 +85,30 @@ h1, h2, h3, h4, h5, h6 {
  * Footer
  */
 .blog-rodape {
-  padding: 1rem 0;
+  margin: 1rem 0;
   color: #999;
   text-align: center;
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
 }
+
 .blog-rodape p:last-child {
   margin-bottom: 0;
+}
+
+.img-aluno img, .img-avatar img, .img-candidato img {
+  width: 7rem;
+  height: 7rem;
+  object-fit: cover;
+}
+
+.semfoto {
+  width: 7rem;
+  height: 7rem;
+  background-color: gainsboro;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: .25rem;
 }
